@@ -3,6 +3,7 @@ from .model import db, News
 import requests
 from bs4 import BeautifulSoup
 
+
 def get_html(url):
     try:
         result = requests.get(url)
@@ -28,6 +29,7 @@ def get_python_news():
             except ValueError:
                 published = datetime.now()
             save_news(title, url, published)
+
 
 def save_news(title, url, published):
     news_exists = News.query.filter(News.url == url).count()
